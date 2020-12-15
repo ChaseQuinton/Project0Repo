@@ -1,0 +1,25 @@
+##CSV Reader and Project 0 testing ground
+- [] The project will be an application for analyzing and processing CSV file input of an emitter/radar threat database. 
+# Requirements
+- [] Written in Scala/SBT
+- [] Takes input from CLI
+    - [] CSV or JSON simple datasets
+    - [] Flags/environment variables
+    - [] arguments
+- [] Parses datasets into a collection
+    - [] Every line parsed into arrays
+    - [] Every item in a line is gathered into a map
+- [] Analysis
+    - [] Count every instance of a key from the map
+- [] Output analysis
+    - [] Output to STDOUT
+    - [] Output to File
+    - [] Output to MongoDB
+    
+## Features
+    - [] CLI that takes dataset as file input
+    - [] Use Scala Map to map values from dataset as keys
+    - [] Aggregate and count (Reduce) all keys
+    - [] Return list of counts
+    - [] Well documented and extensive code coverage with unit tests
+    - [] Logs events and outpute to files and NoSQL
