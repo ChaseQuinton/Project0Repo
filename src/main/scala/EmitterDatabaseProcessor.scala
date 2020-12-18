@@ -7,8 +7,14 @@ package csv
  */
 class EmitterDatabaseProcessor(val threatSequence: Seq[RadarThreat])
 {
+    // Create a map object to transfer and store the sequence of threats into a more robust structure
+    // The Keys will be Strings which correspond to the threat's name
+    // The Values will be references to the RadarThreat Objects themselves
+    var radarThreatMap: Map[String, RadarThreat] = threatSequence.map(RadarThreat => (RadarThreat.threatName, RadarThreat)).toMap
+    // A function to loop through the sequence of RadarThreat objects and print them to the console for testing purposes
     def printContents()
     {
-        threatSequence.foreach(println)
+        //threatSequence.foreach(println)
+        radarThreatMap.foreach(println)
     }
 }

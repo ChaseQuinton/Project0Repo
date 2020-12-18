@@ -51,6 +51,6 @@ class CSVReader(val fileName: String) extends CSVFileReader{
       // Convert strings as necessary into the proper data type for each parameter
       // as defined in the RadarThreat class
       //values.foreach(println)
-    } yield RadarThreat(values(0), values(1), values(2).toBoolean, values(3).toInt, values(4).toInt, values(5).toInt)
+    } yield RadarThreat(values(0), values(1), values(2).toBoolean, values(3).toInt, values(4).toInt, values(5).toInt, values(6).toInt)
   }
 }
