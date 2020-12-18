@@ -13,7 +13,12 @@ object CSVReaderTest extends App {
   val sourceReader = new CSVReader(fileName)
   // Grab the sequence of Threats from the file reader
   val threatSequence = sourceReader.importDatabase()
-  threatSequence.foreach(println)
+  // Test print of the sequence of Threats
+  //threatSequence.foreach(println)
+  // Create a new processor object and pass it the sequence of threats in the constructor
+  val dbProcessor = new EmitterDatabaseProcessor(threatSequence)
+  // Call to a print method, used here for testing/logging purposes
+  dbProcessor.printContents()
 }
 
 /**
