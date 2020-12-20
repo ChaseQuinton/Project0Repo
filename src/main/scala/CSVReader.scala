@@ -18,6 +18,18 @@ object CSVReaderTest extends App {
   // Create a new processor object and pass it the sequence of threats in the constructor
   val dbProcessor = new EmitterDatabaseProcessor(threatSequence)
   // Call to a print method, used here for testing/logging purposes
+  //dbProcessor.printContents()
+  //dbProcessor.calculateHighestMinFreq()
+  //dbProcessor.calculateLowestMinFreq()
+  //dbProcessor.calculateHighestMaxFreq()
+  //dbProcessor.calculateLowestMaxFreq()
+  val testRadarThreat1 = new RadarThreat("testThreat1", "TestCountry1", false, 100, 200, 10000, 20000)
+  dbProcessor.addRadarThreat(testRadarThreat1)
+  dbProcessor.removeRadarThreat(testRadarThreat1)
+  val testRadarThreat2 = new RadarThreat("testThreat2", "TestCountry2", false, 100, 200, 10000, 20000)
+  val testThreatSequence: Seq[RadarThreat] = Seq(testRadarThreat1, testRadarThreat2)
+  dbProcessor.addRadarThreatSequence(testThreatSequence)
+  dbProcessor.removeRadarThreatSequence(testThreatSequence)
   dbProcessor.printContents()
 }
 
