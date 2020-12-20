@@ -1,38 +1,5 @@
 package csv
 
-/** CSVReader
- *  This entry point will allow for user input of a CSV file containing the information
- *  for an emitter/threat database. The data will be parsed and each line converted to
- *  an instance of the Emitter class. Finally the emitters will be aggregated in a map
- *  where the key is the threat name and the value is an instance of the RadarThreat 
- *  class.
- */
-object CSVReaderTest extends App {
-  // Read in the file using the given input
-  val fileName = scala.io.StdIn.readLine("Enter the filename of the emitter database:")
-  val sourceReader = new CSVReader(fileName)
-  // Grab the sequence of Threats from the file reader
-  val threatSequence = sourceReader.importDatabase()
-  // Test print of the sequence of Threats
-  //threatSequence.foreach(println)
-  // Create a new processor object and pass it the sequence of threats in the constructor
-  val dbProcessor = new EmitterDatabaseProcessor(threatSequence)
-  // Call to a print method, used here for testing/logging purposes
-  //dbProcessor.printContents()
-  //dbProcessor.calculateHighestMinFreq()
-  //dbProcessor.calculateLowestMinFreq()
-  //dbProcessor.calculateHighestMaxFreq()
-  //dbProcessor.calculateLowestMaxFreq()
-  val testRadarThreat1 = new RadarThreat("testThreat1", "TestCountry1", false, 100, 200, 10000, 20000)
-  dbProcessor.addRadarThreat(testRadarThreat1)
-  dbProcessor.removeRadarThreat(testRadarThreat1)
-  val testRadarThreat2 = new RadarThreat("testThreat2", "TestCountry2", false, 100, 200, 10000, 20000)
-  val testThreatSequence: Seq[RadarThreat] = Seq(testRadarThreat1, testRadarThreat2)
-  dbProcessor.addRadarThreatSequence(testThreatSequence)
-  dbProcessor.removeRadarThreatSequence(testThreatSequence)
-  dbProcessor.printContents()
-}
-
 /**
   * Trait for importing the emitter database as a CSV file. Have a sequence
   * of RadarThreat objects returned rather than only strings. 
