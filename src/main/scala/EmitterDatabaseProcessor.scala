@@ -45,7 +45,7 @@ class EmitterDatabaseProcessor(val threatSequence: Seq[RadarThreat])
     /**
       * A method to search the threat database comparing the minimum frequencies range 
       * values to find the lowest
-      * @return the highest maximum frequency as an Integer
+      * @return the lowest manimum frequency as an Integer
       */
     def calculateLowestMinFreq(): Integer = {
         // Start a running record of the lowest min frequency by starting with a high value
@@ -99,5 +99,35 @@ class EmitterDatabaseProcessor(val threatSequence: Seq[RadarThreat])
         println("The lowest calculated maximum operating frequency of any threat is: ")
         println(lowestMaxFreq)
         return lowestMaxFreq
+    }
+    /**
+      * A method to search the threat database comparing the operating range 
+      * values to find the longest (radial distance from emitter source in meters)
+      * @return the farthest operating range (radial distance from emitter source in meters) as an integer
+      */
+    def calculateLongestOpRange(): Integer = {
+        // Start a running record of the longest operating range by starting with zero
+        var longestOpRange = 0
+        // Loop through the values (RadarThreats) in the map and determine the lowest op Range
+        radarThreatMap.values.foreach{x => if(x.opRange > longestOpRange) longestOpRange = x.opRange}
+        // Print to console 
+        println("The longest calculated operating range of any threat is: ")
+        println(longestOpRange)
+        return longestOpRange
+    }
+    /**
+      * A method to search the threat database comparing the operating altitude 
+      * values to find the highest 
+      * @return an integer, the highest operating altitude in meters
+      */
+    def calculateHighestOpAltitude(): Integer = {
+        // Start a running record of the longest operating range by starting with zero
+        var highestOpAlt = 0
+        // Loop through the values (RadarThreats) in the map and determine the lowest op Range
+        radarThreatMap.values.foreach{x => if(x.opAlt > highestOpAlt) highestOpAlt = x.opRange}
+        // Print to console 
+        println("The highest calculated operating altitude of any threat is: ")
+        println(highestOpAlt)
+        return highestOpAlt
     }
 }
