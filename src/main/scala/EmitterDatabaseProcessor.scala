@@ -1,5 +1,4 @@
 package csv
-
 /** Emitter Database Processor
  *  This class is created using a sequence of RadarThreat object parsed from the corresponding 
  *  data file. Upon instantiation it is passed the sequence, converts it to a map which will 
@@ -17,6 +16,7 @@ class EmitterDatabaseProcessor(val threatSequence: Seq[RadarThreat])
     def printContents()
     {
         radarThreatMap.foreach(println)
+        //println(compact(JsonAST.render(radarThreatMap)))
     }
     /**
      * A function to add a single new Radar Threat Object to the database (The class instance of the map)
