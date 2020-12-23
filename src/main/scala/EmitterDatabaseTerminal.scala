@@ -19,12 +19,16 @@ object EmitterDatabaseTerminal extends App {
   // manipulating the data. First create a flag for the while loop...
   var stillRunning = true
   while (stillRunning){
+    println("")
+    println("")
     println("1: Import additional csv database")
     println("2: Add a single Threat")
     println("3: Remove a single Threat")
     println("4: Run Basic Test Suite")
     println("5: Export Database")
     println("6: Exit")
+    println("")
+    println("")
     var userSelection = scala.io.StdIn.readLine("Please select an option from the menu above: ")
     userSelection match{
       case "1" => {
@@ -48,27 +52,17 @@ object EmitterDatabaseTerminal extends App {
         dbProcessor.calculateLowestMaxFreq()
         dbProcessor.calculateLongestOpRange()
         dbProcessor.calculateHighestOpAltitude()
+        val newFileName = scala.io.StdIn.readLine("Press Enter To Return to Main Menu:")
       }
-      case "5" => dbProcessor.printContents()
+      case "5" => {
+        dbProcessor.printContents()
+        val newFileName = scala.io.StdIn.readLine("Press Enter To Return to Main Menu:")
+      }
       case "6" => stillRunning = false
       case _ => println("other")
   }
 }
   dbProcessor.printContents()
-  //dbProcessor.addRadarThreatSequence(testSecondfileSequence)
-  /*dbProcessor.addRadarThreat(testRadarThreat1)
-  dbProcessor.removeRadarThreat(testRadarThreat1)
-  val testRadarThreat2 = new RadarThreat("testThreat2", "TestCountry2", false, 100, 200, 10000, 20000)
-  val testThreatSequence: Seq[RadarThreat] = Seq(testRadarThreat1, testRadarThreat2)
-  dbProcessor.addRadarThreatSequence(testThreatSequence)
-  dbProcessor.removeRadarThreatSequence(testThreatSequence)
-  dbProcessor.calculateHighestMinFreq()
-  dbProcessor.calculateLowestMinFreq()
-  dbProcessor.calculateHighestMaxFreq()
-  dbProcessor.calculateLowestMaxFreq()
-  dbProcessor.calculateLongestOpRange()
-  dbProcessor.calculateHighestOpAltitude()
-  dbProcessor.printContents()
-  val mongoDAO = new MongoTranslator("EmitterDatabase")*/
+  val mongoDAO = new MongoTranslator("EmitterDatabase")
 
 }
