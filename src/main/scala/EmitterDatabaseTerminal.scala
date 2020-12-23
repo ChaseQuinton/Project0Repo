@@ -62,7 +62,7 @@ object EmitterDatabaseTerminal extends App {
       case _ => println("other")
   }
 }
-  dbProcessor.printContents()
+  //dbProcessor.printContents()
   val mongoDAO = new MongoTranslator("EmitterDatabase")
 
 }

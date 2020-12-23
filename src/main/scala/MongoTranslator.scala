@@ -18,6 +18,7 @@ import org.mongodb.scala.model.Filters.equal
 //import javax.swing.text.Document
 import scala.collection.JavaConverters._
 import org.mongodb.scala.bson.collection.immutable.Document
+import java.util.concurrent.TimeUnit
 //import com.mongodb.casbah.Imports._
 
 /** MongoTranslator
@@ -28,6 +29,8 @@ class MongoTranslator(val databaseName: String) {
     val mongoClient: MongoClient = MongoClient()
     val database: MongoDatabase = mongoClient.getDatabase(databaseName)
     val collection: MongoCollection[Document] = database.getCollection("RadarThreats")
+    val res = collection.find().first().head()
+    Await.result(res, Duration(10, TimeUnit.SECONDS)).foreach(println)
     val doc: Document = Document("Threat Name" -> "TestThreat", "country" -> "TestCountry")
     collection.insertOne(doc)
 }
