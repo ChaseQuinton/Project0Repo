@@ -1,4 +1,7 @@
 package csv
+import org.mongodb.scala.MongoClient
+import org.mongodb.scala.MongoCollection
+
 /** Emitter Database Terminal
  *  This entry point is a command line interface providing the user with a menu of options
  *  for creating and modifying Emitter/Radar Threat databases.  
@@ -63,6 +66,7 @@ object EmitterDatabaseTerminal extends App {
   }
 }
   //dbProcessor.printContents()
-  val mongoDAO = new MongoTranslator("EmitterDatabase")
+  val threatsDAO = new EmitterDao(new MongoClient("mongodb://host:27017,host2:27017/?replicaSet=rs0"))
+  println(threatsDAO.getAll())
 
 }

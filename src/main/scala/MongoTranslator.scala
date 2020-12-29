@@ -20,6 +20,7 @@ import scala.collection.JavaConverters._
 import org.mongodb.scala.bson.collection.immutable.Document
 import java.util.concurrent.TimeUnit
 //import com.mongodb.casbah.Imports._
+import tour.Helpers._
 
 /** MongoTranslator
  *  This class is used to communicate with the Emitter Database Processor and translate
@@ -29,8 +30,10 @@ class MongoTranslator(val databaseName: String) {
     val mongoClient: MongoClient = MongoClient()
     val database: MongoDatabase = mongoClient.getDatabase(databaseName)
     val collection: MongoCollection[Document] = database.getCollection("RadarThreats")
-    val res = collection.find().first().head()
+    //collection.results
+    val res = collection.find().toFuture()
     Await.result(res, Duration(10, TimeUnit.SECONDS)).foreach(println)
     val doc: Document = Document("Threat Name" -> "TestThreat", "country" -> "TestCountry")
+    //Await.result(res.insertOne(doc), Duration(10, TimeUnit.SECONDS))
     collection.insertOne(doc)
 }

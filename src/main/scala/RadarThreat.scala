@@ -20,6 +20,4 @@ case class RadarThreat(
     val minFreq: Int,
     val maxFreq: Int,
     val opRange: Int,
-    val opAlt: Int) {
-  
-}
+    val opAlt: Int) {}
