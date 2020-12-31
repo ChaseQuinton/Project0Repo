@@ -66,7 +66,8 @@ object EmitterDatabaseTerminal extends App {
   }
 }
   //dbProcessor.printContents()
-  val threatsDAO = new EmitterDao(new MongoClient("mongodb://host:27017,host2:27017/?replicaSet=rs0"))
+  val mongoClient: MongoClient = MongoClient()
+  val threatsDAO = new EmitterDao(mongoClient)
   println(threatsDAO.getAll())
 
 }
